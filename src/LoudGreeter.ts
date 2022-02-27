@@ -8,22 +8,16 @@
 // Jest Tests: Test with and without calling addVolume. Test calling addVolume different numbers of times.
 
 // QUESTIONS FOR CLASS: #1 WHATS THE DIFFERENCE BETWEEN SETTING AN INITIAL VALUE IN THE PROPERTY VS CONSTRUCTOR?
-// 2# AM I NOT ABLE TO MODIFY RETURN VALUES WITH METHODS
+// #2 STEP 4 SAID TO HARD CODE A VALUE FOR THE PROPERTY EXTRA, HOWEVER THAT DIDN'T DO ANYTHING AND I ENDED UP SPINNING MY WHEELS TRYING TO WRITE A METHOD THAT CALLED ON EXTRA'S PROPERTY VALUE. WHAT ARE THE LIMITATIONS OF HARDCODING A VALUE INTO BOTH THE PROPERTY AND THE CONSTRUCTOR?
+
 import { Greeter } from "./Greeter";
 
 export class LoudGreeter extends Greeter {
   private extra: string = "!";
-  constructor(newGreeting: string, newExtra: string) {
-    super(newGreeting);
-  }
   addVolume(): void {
-    +`${this.extra}`;
+    this.extra += `!`;
   }
   greet(name: string) {
-    return `${this.greeting}, ${name}!!`;
+    return `${this.greeting}, ${name}!!${this.extra}`;
   }
 }
-const yup: LoudGreeter = new LoudGreeter("Hola", "!");
-yup.addVolume();
-yup.addVolume();
-console.log(yup.greet("Kim"));
